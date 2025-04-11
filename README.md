@@ -259,37 +259,37 @@ Please make sure to update tests as appropriate and follow the code style of the
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 日志级别控制
+## Log Level Control
 
-MacCleaner 提供了三级日志控制机制：
+MacCleaner provides three levels of logging control:
 
-- 默认模式：只显示结果，不输出日志信息（ERROR 级别）
-- 详细模式 (`-v` 或 `--verbose`): 显示一般信息日志（INFO 级别）
-- 调试模式 (`-X` 或 `--debug`): 显示全部详细调试日志（DEBUG 级别）
+- Default mode: Shows only results, no log messages (ERROR level)
+- Verbose mode (`-v` or `--verbose`): Displays general information logs (INFO level)
+- Debug mode (`-X` or `--debug`): Shows all detailed debug logs (DEBUG level)
 
-示例：
+Examples:
 ```bash
-# 默认模式 - 只显示结果
+# Default mode - displays only results
 python -m maccleaner.cli app-analyze safari
 
-# 详细模式 - 显示INFO级别日志
+# Verbose mode - displays INFO level logs
 python -m maccleaner.cli -v app-analyze safari
 
-# 调试模式 - 显示全部DEBUG级别日志
+# Debug mode - displays all DEBUG level logs
 python -m maccleaner.cli -X app-analyze safari
 ```
 
-## 注意事项与错误处理
+## Notes and Error Handling
 
-Mac清理工具在处理多个应用程序时采取了多项优化措施：
+MacCleaner implements several optimizations when processing multiple applications:
 
-1. **单应用分析优化** - 指定单个应用时，不会扫描所有应用程序，只分析目标应用
-2. **超时保护机制** - 解析应用信息时设有5秒超时限制，防止无效plist文件导致程序卡死
-3. **错误容忍** - 单个应用分析失败不会影响整体分析流程
-4. **进度显示** - 分析所有应用时会显示进度信息，方便了解处理进度
-5. **兼容性处理** - 能够处理各种格式的plist文件，包括二进制和XML格式，并尝试多种方法提取信息
+1. **Single-app analysis optimization** - When specifying a single application, it only analyzes the target app without scanning all applications
+2. **Timeout protection** - Sets a 5-second timeout limit when parsing application information to prevent program freezes due to invalid plist files
+3. **Error tolerance** - Failure to analyze a single application doesn't affect the overall analysis process
+4. **Progress display** - Shows progress information when analyzing all applications
+5. **Compatibility handling** - Processes various plist file formats, including binary and XML formats, and attempts multiple methods to extract information
 
-如果在分析所有应用时遇到问题，请尝试以下解决方案：
-- 使用`-v`或`-X`参数查看详细日志，定位具体问题
-- 指定分析单个应用，避免处理所有应用
-- 检查应用的Info.plist文件是否损坏
+If you encounter problems when analyzing all applications, try these solutions:
+- Use the `-v` or `-X` parameter to view detailed logs and identify specific issues
+- Specify analysis for a single application to avoid processing all applications
+- Check if the application's Info.plist file is corrupted
