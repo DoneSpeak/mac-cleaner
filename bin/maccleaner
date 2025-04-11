@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+Executable script for running MacCleaner from the command line.
+This script is installed as a command-line utility when MacCleaner is installed.
+"""
+
+import sys
+from maccleaner.cli import main
+
+if __name__ == "__main__":
+    sys.exit(main()) 
